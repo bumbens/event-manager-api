@@ -17,7 +17,7 @@ public class PaymentChecker {
     @Autowired
     private RegistrationRepository registrationRepository;
 
-    @Scheduled(fixedDelay = 5000)
+    @Scheduled(fixedDelay = 43200000) // every 12 hours
     public void updatePaymentStatus(){
         List<Registration> registrations = registrationRepository.findByPaymentStatusIn(List.of(
             PaymentStatus.NEW,
