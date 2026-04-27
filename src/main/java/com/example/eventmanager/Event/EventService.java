@@ -1,6 +1,5 @@
 package com.example.eventmanager.Event;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ public class EventService {
     }
 
     public Event createEvent(Event event){
-        event.setDate(LocalDate.now());
         return eventRepository.save(event);
     }
 
@@ -30,8 +28,9 @@ public class EventService {
         event.setName(updatedEvent.getName());
         event.setDate(updatedEvent.getDate());
         event.setDescription(updatedEvent.getDescription());
+        event.setPaymentDeadline(updatedEvent.getPaymentDeadline());
         event.setLocation(updatedEvent.getLocation());
         event.setPrice(updatedEvent.getPrice());
-        return eventRepository.save(updatedEvent);
+        return eventRepository.save(event);
     }
 }

@@ -2,7 +2,10 @@ package com.example.eventmanager;
 
 public enum PaymentStatus {
     NEW,
-    IN_PROGRESS,
-    COMPLETED,
+    PAYMENT_IN_PROGRESS,
+    PAID,
+    FREE,
+    NO_PAYMENT,
+    CANCELLED,
     FAILED
 }

@@ -3,6 +3,8 @@ package com.example.eventmanager.Event;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import jakarta.annotation.Nullable;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,20 +15,28 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
     private LocalDate date;
+    
+    private LocalDate paymentDeadline;
+    @Column(nullable = false)
     private BigDecimal price;
+    @Column(nullable = false)
     private String location;
 
     public Event() {
     }
 
-    public Event(Long id, String name, String description, LocalDate date, BigDecimal price, String location) {
+    public Event(Long id, String name, String description, LocalDate date, LocalDate paymentDeadline, BigDecimal price, String location) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.date = date;
+        this.paymentDeadline = paymentDeadline;
         this.price = price;
         this.location = location;
     }
@@ -61,6 +71,14 @@ public class Event {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public LocalDate getPaymentDeadline(){
+        return paymentDeadline;
+    }
+
+    public void setPaymentDeadline(LocalDate paymentDeadline){
+        this.paymentDeadline = paymentDeadline;
     }
 
     public String getLocation() {
