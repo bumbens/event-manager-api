@@ -5,11 +5,17 @@ Spring Boot REST API for managing events and user registrations.
 It utilises JPA/Hibernate to establish a connection with a PostgreSQL database, allowing users to create events, register participants, and track payment statuses.
 
 ## Tech Stack
+
+**Backend**
 - Java 17
 - Spring Boot
 - PostgreSQL
 - JPA / Hibernate
 - JUnit 5 / Mockito
+
+**Frontend**
+- React
+- Vite
 
 ## How to Run
 
@@ -43,6 +49,16 @@ It utilises JPA/Hibernate to establish a connection with a PostgreSQL database, 
    ```
 
 The API will be available at `http://localhost:8080`.
+
+## Frontend
+
+A React frontend is available at [https://github.com/bumbens/event-manager-frontend](https://github.com/bumbens/event-manager-api/tree/main/eventmanager-frontend).
+
+Built with React + Vite. Allows users to:
+- View all registrations
+- Register a user for an event
+
+The frontend is currently under active development. More features coming soon. 
 
 ## API Endpoints
 
