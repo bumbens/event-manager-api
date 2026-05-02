@@ -18,8 +18,6 @@ It utilises JPA/Hibernate to establish a connection with a PostgreSQL database, 
 - Vite
 
 ## How to Run
-
-## How to Run
  
 ### Prerequisites
 - Java 17+
