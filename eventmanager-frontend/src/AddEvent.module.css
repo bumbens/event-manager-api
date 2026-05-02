@@ -1,0 +1,11 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.submitButton {
+    margin-top: 10px;
+}

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.example.eventmanager.PaymentStatus;
 import com.example.eventmanager.Event.Event;
 import com.example.eventmanager.Event.EventRepository;
+import com.example.eventmanager.Event.NoEventException;
+import com.example.eventmanager.User.NoUserException;
 import com.example.eventmanager.User.User;
 import com.example.eventmanager.User.UserRepository;
 
@@ -34,14 +36,19 @@ public class RegistrationService {
     }
 
     public Registration addNewRegistration(Long userId, Long eventId){
-        User user = userRepository.findById(userId).orElseThrow(() -> new NullPointerException());
-        Event event = eventRepository.findById(eventId).orElseThrow(() -> new NullPointerException());
+        User user = userRepository.findById(userId).orElseThrow(() -> new NoUserException(userId));
+        Event event = eventRepository.findById(eventId).orElseThrow(() -> new NoEventException(eventId));
         Registration registration = new Registration(null, user, event, LocalDate.now(), PaymentStatus.NEW);
         return registrationRepository.save(registration);
     }
 
+    public Registration findRegistrationById(Long regId){
+        Registration registration = registrationRepository.findById(regId).orElseThrow(() -> new NoRegException(regId));
+        return registration;
+    }
+
     public Registration updateRegistration(Long id, Registration updateRegistration){
-        Registration registration = registrationRepository.findById(id).orElseThrow(() -> new NullPointerException());
+        Registration registration = registrationRepository.findById(id).orElseThrow(() -> new NoRegException(id));
 
         registration.setUser(updateRegistration.getUser());
         registration.setPaymentStatus(updateRegistration.getPaymentStatus());

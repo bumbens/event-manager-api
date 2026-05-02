@@ -1,4 +1,6 @@
   import { useState, useEffect } from "react"
+  import AddUser from "./AddUser"
+  import AddEvent from "./AddEvent"
 
   function App(){
     const [registrations, setRegistrations] = useState([])
@@ -13,6 +15,23 @@
         .then(data => setRegistrations(data))
     }
 
+    const addUser = (userName, userMail) => {
+      fetch('http://localhost:8080/users', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name: userName, email: userMail})
+      })
+
+    }
+
+    const addEvent = (eventName, eventDesc, eventDate, eventPaymentDeadline, eventPrice, eventLoc) => {
+      fetch('http://localhost:8080/events', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name: eventName, description: eventDesc, date: eventDate, paymentDeadline: eventPaymentDeadline, price: parseFloat(eventPrice), location: eventLoc })
+      })
+    }
+
     useEffect(() => {
       fetchRegistrations()
     
@@ -24,6 +43,7 @@
         .then(response => response.json())
         .then(data => setUsers(data))
     }, [])
+
 
     const addRegistration = () => {
       console.log("userId:", userId, "eventId:", eventId)
@@ -43,6 +63,8 @@
     return(
       <div>
         <h1>Event Manager</h1>
+        <AddUser onAddUser={addUser} />
+        <AddEvent onAddEvent={addEvent} />
         <h2>List of registrations</h2>
         <select onChange={(e) => {
          setUserId(e.target.value)

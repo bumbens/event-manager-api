@@ -3,7 +3,6 @@ package com.example.eventmanager.Event;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +20,7 @@ public class Event {
     private String description;
     @Column(nullable = false)
     private LocalDate date;
-    
+
     private LocalDate paymentDeadline;
     @Column(nullable = false)
     private BigDecimal price;
