@@ -67,7 +67,7 @@ The API will be available at `http://localhost:8080`.
    npm run dev
    ```
  
-The frontend will be available at `http://localhost:5174`.
+The frontend will be available at `http://localhost:5173` (the correct port is shown in the terminal after running the command).
  
 ## Frontend
  
