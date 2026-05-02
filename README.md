@@ -19,46 +19,66 @@ It utilises JPA/Hibernate to establish a connection with a PostgreSQL database, 
 
 ## How to Run
 
+## How to Run
+ 
 ### Prerequisites
 - Java 17+
 - PostgreSQL
 - Gradle
-
-### Setup
-
+- Node.js
+### Backend Setup
+ 
 1. Clone the repository
    ```bash
    git clone https://github.com/bumbens/event-manager-api.git
    cd event-manager-api
    ```
-
+ 
 2. Create a PostgreSQL database
    ```sql
    CREATE DATABASE eventmanager;
    ```
-
+ 
 3. Configure the application
    ```bash
    cp src/main/resources/application.properties.example src/main/resources/application.properties
    ```
    Edit `application.properties` and fill in your PostgreSQL credentials.
-
 4. Run the application
    ```bash
    ./gradlew bootRun
    ```
-
+ 
 The API will be available at `http://localhost:8080`.
-
+ 
+### Frontend Setup
+ 
+1. Clone the frontend repository
+   ```bash
+   git clone https://github.com/bumbens/event-manager-frontend.git
+   cd event-manager-frontend
+   ```
+ 
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+ 
+3. Run the development server
+   ```bash
+   npm run dev
+   ```
+ 
+The frontend will be available at `http://localhost:5174`.
+ 
 ## Frontend
-
-A React frontend is available at [https://github.com/bumbens/event-manager-frontend](https://github.com/bumbens/event-manager-api/tree/main/eventmanager-frontend).
-
+ 
+A React frontend is available at [https://github.com/bumbens/event-manager-frontend](https://github.com/bumbens/event-manager-frontend).
+ 
 Built with React + Vite. Allows users to:
 - View all registrations
 - Register a user for an event
-
-The frontend is currently under active development. More features coming soon. 
+The frontend is currently under active development. More features coming soon.
 
 ## API Endpoints
 
