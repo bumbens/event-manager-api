@@ -1,6 +1,7 @@
   import { useState, useEffect } from "react"
   import AddUser from "./AddUser"
   import AddEvent from "./AddEvent"
+  import { Route, Routes } from 'react-router-dom'
 
   function App(){
     const [registrations, setRegistrations] = useState([])
@@ -61,42 +62,46 @@
     }
 
     return(
-      <div>
-        <h1>Event Manager</h1>
-        <AddUser onAddUser={addUser} />
-        <AddEvent onAddEvent={addEvent} />
-        <h2>List of registrations</h2>
-        <select onChange={(e) => {
-         setUserId(e.target.value)
-        }}>
-        <option value="">Select user</option> 
-            { users.map(user =>(
-            <option key={user.id} value={user.id}>{user.name}</option>
-        ))}  
-        </select>
+      // <div>
+      //   <h1>Event Manager</h1>
+      //   <AddUser onAddUser={addUser} />
+      //   <AddEvent onAddEvent={addEvent} />
+      //   <h2>List of registrations</h2>
+      //   <select onChange={(e) => {
+      //    setUserId(e.target.value)
+      //   }}>
+      //   <option value="">Select user</option> 
+      //       { users.map(user =>(
+      //       <option key={user.id} value={user.id}>{user.name}</option>
+      //   ))}  
+      //   </select>
 
-        <select onChange={(e) => {
-          setEventId(e.target.value)
-        }}>
-          <option value="">Select event</option> {
-            events.map(event => (
-              <option key = {event.id} value={event.id}>{event.name}</option>
-            ))
-          }
-        </select>
+      //   <select onChange={(e) => {
+      //     setEventId(e.target.value)
+      //   }}>
+      //     <option value="">Select event</option> {
+      //       events.map(event => (
+      //         <option key = {event.id} value={event.id}>{event.name}</option>
+      //       ))
+      //     }
+      //   </select>
 
 
-        <button onClick={addRegistration}>Add Registration</button>
+      //   <button onClick={addRegistration}>Add Registration</button>
 
-        <h2>List of registrations</h2>
-        {registrations.map(registration => (
-          <div key={registration.id}>
-            <p>{registration.id}: {registration.user.name} → {registration.event.name} — {registration.paymentStatus}</p>
-          </div>
-        ))}
+      //   <h2>List of registrations</h2>
+      //   {registrations.map(registration => (
+      //     <div key={registration.id}>
+      //       <p>{registration.id}: {registration.user.name} → {registration.event.name} — {registration.paymentStatus}</p>
+      //     </div>
+      //   ))}
 
-      </div>
+      // </div>
       
+      <Routes>
+        <Route path="/" element={<AddEvent onAddEvent={addEvent}/>} />
+        <Route path="/users" element={<AddUser onAddUser={addUser}/>} />
+      </Routes>
     )
 }
 

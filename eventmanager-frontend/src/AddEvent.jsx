@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import styles from './css/AddEvent.module.css'
 
-import styles from './AddEvent.module.css'
 
 function AddEvent({onAddEvent}) {
     const [eventName, setEventName] = useState("")
@@ -17,6 +17,10 @@ function AddEvent({onAddEvent}) {
         }
         onAddEvent(eventName, eventDesc, eventDate, eventPaymentDeadline, eventPrice, eventLoc)
     }
+
+    useEffect(() => {
+        document.title = 'Add Event | Event Manager'
+    }, [])
 
     return(
         <div className={styles.field}>

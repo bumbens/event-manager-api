@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import styles from './AddEvent.module.css'
+import styles from './css/AddEvent.module.css'
 function AddUser({onAddUser}) {
     const [userName, setUserName] = useState("")
     const [userMail, setUserMail] = useState("")
